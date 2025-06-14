@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import "./App.css";
 import { EditorState } from "draft-js";
-import MyEditor from "./MyEditor";
-import { actionObj, BOLDTEXT, getAction, ITALICTEXT, THROWTEXT } from "./Actions";
+import MyEditor from "./components/MyEditor";
+import { actionObj, BOLDTEXT, getAction, ITALICTEXT, THROWTEXT } from "./components/Actions";
 
 function App() {
   const [state, setState] = useState(EditorState.createEmpty());

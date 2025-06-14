@@ -2,9 +2,9 @@ import { RichUtils,EditorState } from "draft-js";
 export const BOLDTEXT = "BOLD",
   ITALICTEXT = "ITALIC",
   UNDERLINETEXT = "UNDERLINE",
-  THROWTEXT = "STRIKETHROUGH" //If future customization
+  THROWTEXT = "STRIKETHROUGH" //If future customization - keywords of draft.js
 
-// TYPE
+
 interface ToolbarActions  {
   toggleBold: () => void;
   toggleItalic: () => void;
@@ -16,6 +16,13 @@ export interface actionObj{
   actionName: String,
   method?: ()=>void
 }
+/*
+ 2 steps to add an action
+  1-add an action inside actions()
+  2-add a case inside getAction()
+
+  #finally, Use getAction(x,y,z) to put a method
+*/
 
 export const toggleStyle = (style: string, editorState, onChange) => {
   const newState = RichUtils.toggleInlineStyle(editorState, style);

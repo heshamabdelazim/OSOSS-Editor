@@ -6,7 +6,7 @@ import {
 } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import { actionObj, BOLDTEXT, getAction, ITALICTEXT, THROWTEXT, UNDERLINETEXT } from './Actions';
-import { MyEditorProps } from './components/types';
+import { MyEditorProps } from './types';
 
 const MyEditor: React.FC<MyEditorProps> = React.memo(({
   value,
