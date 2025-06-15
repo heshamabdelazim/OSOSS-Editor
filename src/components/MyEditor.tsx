@@ -1,11 +1,10 @@
-// MyEditor.tsx
 import React, { useState, useCallback, useEffect } from 'react';
 import {
   Editor,
   EditorState,
 } from 'draft-js';
 import 'draft-js/dist/Draft.css';
-import { actionObj, BOLDTEXT, getAction, ITALICTEXT, THROWTEXT, UNDERLINETEXT } from './Actions';
+import { actionObj, actions} from './Actions';
 import { MyEditorProps } from './types';
 
 const MyEditor: React.FC<MyEditorProps> = React.memo(({
@@ -20,10 +19,10 @@ const MyEditor: React.FC<MyEditorProps> = React.memo(({
   const isControlled :boolean = value !== undefined; 
   const editorState:EditorState = isControlled ? value : internalState;
   const updateState = isControlled ? onChange : setInternalState;
-  const actionsArr: actionObj[] | false = !renderToolbar && [{ actionName: "BOLD", method: getAction(BOLDTEXT, internalState, updateState) },
-  { actionName: "ITALIC", method: getAction(ITALICTEXT, internalState, updateState) },
-  { actionName: "UNDERLINE", method: getAction(UNDERLINETEXT, internalState, updateState) },];
-  // const updateState = (newState: EditorState) => isControlled?onChange?.(newState):setInternalState(newState);
+  const actionsArr: actionObj[] | false = !renderToolbar && [
+    { actionName: "bold", method: actions(internalState, updateState).toggleBold },
+    { actionName: "Italic", method: actions(internalState,updateState).toggleItalic },
+    { actionName: "Underline", method: actions(internalState,updateState).toggleUnderline }];
   
   return (
       <div

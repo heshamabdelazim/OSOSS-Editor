@@ -2,15 +2,15 @@ import { useCallback, useState } from "react";
 import "./App.css";
 import { EditorState } from "draft-js";
 import MyEditor from "./components/MyEditor";
-import { actionObj, BOLDTEXT, getAction, ITALICTEXT, THROWTEXT } from "./components/Actions";
+import {actionObj, actions} from "./components/Actions";
 
 function App() {
   const [state, setState] = useState(EditorState.createEmpty());
 
   const actionsArr : actionObj[] = [
-    { actionName: "B", method: getAction(BOLDTEXT, state, setState) },
-    { actionName: "I", method: getAction(ITALICTEXT, state, setState) },
-    { actionName: "Throw", method: getAction(THROWTEXT, state, setState) },
+    { actionName: "B", method: actions(state,setState).toggleBold },
+    { actionName: "I", method: actions(state,setState).toggleItalic },
+    { actionName: "Throw", method: actions(state,setState).toggleThrough },
   ];
   //to add a new action go to /Actions.tsx and add one, then call it here
   const someActions = () => (
