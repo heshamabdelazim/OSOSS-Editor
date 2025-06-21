@@ -12,16 +12,17 @@ const MyEditor: React.FC<MyEditorProps> = React.memo(({
   className,
   style,
 }) => {
-  // config exists? it's controlled
-  const [internalState, setInternalState] = useState(() =>EditorState.createEmpty());
+  // config exists? it's controlled => means no internalState used
+  const [internalState, setInternalState] = useState(EditorState.createEmpty());
   const editorState:EditorState = config ? config.state : internalState;
   const updateState:void = config ? config.onChange : setInternalState;
-  const defaultActions = useRef([
+  const defaultActions = [
     { actionName: "bold", method: actions(editorState, updateState).toggleBold},
     { actionName: "Italic", method: actions(editorState, updateState).toggleItalic},
     { actionName: "Underline", method: actions(editorState, updateState).toggleUnderline}
-  ]);
-  const actionsArr: actionObj[] = config ? config.actionsArr :defaultActions.current;
+  ];
+  const actionsArr: actionObj[] = config ? config.actionsArr :defaultActions;
+  console.log(actionsArr,config&&"contrlled");
   
   return (
       <div
@@ -36,7 +37,7 @@ const MyEditor: React.FC<MyEditorProps> = React.memo(({
     >
         <div style={{ marginBottom: '1rem' }}>
               {actionsArr.map(ele => (
-                <button key={ele.actionName} onMouseDown={e => (e.preventDefault(), ele.method())}>
+                <button key={ele.actionName} onMouseDown={e => (e.preventDefault(), ele.method?.())}>
                   {ele.actionName}
                 </button>
               ))}
