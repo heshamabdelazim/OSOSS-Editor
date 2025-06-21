@@ -1,21 +1,9 @@
 import { RichUtils,EditorState } from "draft-js";
+import { ToolbarActions } from "./types";
 export const BOLDTEXT = "BOLD",
   ITALICTEXT = "ITALIC",
   UNDERLINETEXT = "UNDERLINE",
   THROWTEXT = "STRIKETHROUGH" //If future customization - keywords of draft.js
-
-
-interface ToolbarActions  {
-  toggleBold: () => void;
-  toggleItalic: () => void;
-  toggleUnderline: () => void;
-  toggleThrough?: ()=> void
-};
-
-export interface actionObj{
-  actionName: String,
-  method?: ()=>void
-}
 /*
  2 steps to add an action
   -Add an action inside actions()

@@ -1,11 +1,9 @@
 import EditorState from "draft-js";
 
 export type MyEditorProps = {
-  value?: EditorState;
-  onChange?: (state: EditorState) => void;
+  config?: { state: EditorState; actionsArr: actionObj[]; onChange };
   className?: string;
   style?: React.CSSProperties;
-  renderToolbar?: () => React.ReactNode;
 };
 
 // TYPE
@@ -18,5 +16,5 @@ export interface ToolbarActions {
 
 export interface actionObj {
   actionName: String;
-  method?: () => void;
+  method: () => void;
 }
